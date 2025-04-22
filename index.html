@@ -945,6 +945,8 @@
             <h2 id="previewTitle">Wallpaper Title</h2>
             <img id="previewCoverPhoto" src="" alt="Cover Photo" style="width: 100%; max-height: 70vh; object-fit: contain; margin: 20px 0;">
             <p id="previewDesc">Description goes here...</p>
+<button onclick="shareWallpaper(currentPreviewWallpaperId)" class="download-btn" style="margin-top: 10px; margin-bottom: 10px; padding: 12px 20px; background-color: #8a7053; color: #fff; border: none; border-radius: 4px;">Share Wallpaper</button>
+
             <button id="downloadBtnPreview" class="download-btn" style="margin-top: 20px; padding: 12px 20px;">Download Wallpaper</button>
         </div>
     </div>
@@ -1004,8 +1006,32 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js">
+// On page load, check for ?id= in URL
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const wallpaperId = params.get('id');
+    if (wallpaperId) {
+        setTimeout(() => {
+            openPreviewModal(wallpaperId);
+        }, 500); // Delay to allow Firebase to load
+    }
+});
+
+</script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js">
+// On page load, check for ?id= in URL
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const wallpaperId = params.get('id');
+    if (wallpaperId) {
+        setTimeout(() => {
+            openPreviewModal(wallpaperId);
+        }, 500); // Delay to allow Firebase to load
+    }
+});
+
+</script>
 
     <script>
         // IMPORTANT: Replace with your actual Firebase project configuration
@@ -1125,9 +1151,7 @@
         <button class="download-icon-btn" onclick="event.stopPropagation(); triggerDownload('${wallpaper.id}')">
             <i class="fas fa-download"></i>
         </button>
-        <button class="download-icon-btn" style="right: 50px;" onclick="event.stopPropagation(); shareWallpaper('${wallpaper.id}')">
-            <i class="fas fa-share-alt"></i>
-        </button>
+        
     </div>
     <div class="wallpaper-info">
         <h3>
@@ -1360,32 +1384,17 @@
         }
 
         // Open Wallpaper Preview Modal
-        function openPreviewModal(wallpaperId) {
-            const wallpaper = allWallpapers.find(w => w.id === wallpaperId);
+        
+let currentPreviewWallpaperId;
 
-            if (wallpaper && wallpaper.status === 'published') {
-                document.getElementById('previewTitle').textContent = wallpaper.title;
-                document.getElementById('previewCoverPhoto').src = wallpaper.image || '/api/placeholder/500/400?text=No+Image';
-                document.getElementById('previewCoverPhoto').alt = wallpaper.title;
-                document.getElementById('previewDesc').textContent = wallpaper.description || 'No description available.';
+// Open Wallpaper Page by navigating
+function openPreviewModal(wallpaperId) {
+    // Redirect to new URL with the wallpaper ID in the query
+    window.location.href = `${window.location.origin}/wallpaper?id=${wallpaperId}`;
+}
 
-                const downloadButton = document.getElementById('downloadBtnPreview');
-                const newDownloadButton = downloadButton.cloneNode(true);
-                downloadButton.parentNode.replaceChild(newDownloadButton, downloadButton);
-                newDownloadButton.addEventListener('click', () => {
-                    triggerDownload(wallpaper.id);
-                    closePreviewModal();
-                });
 
-                document.getElementById('previewModal').style.display = 'flex';
-            } else {
-                console.warn(`Preview requested for non-existent or unpublished wallpaper ID: ${wallpaperId}`);
-                alert("Could not load wallpaper preview.");
-            }
-        }
-
-        // Close Preview Modal
-        function closePreviewModal() {
+function closePreviewModal() {
             const modal = document.getElementById('previewModal');
             if (modal) modal.style.display = 'none';
             document.getElementById('previewCoverPhoto').src = '';
@@ -1442,24 +1451,33 @@
         }
 
         // Basic Image Protection (can be bypassed)
-      // Check for shared wallpaper link via URL param
-function checkSharedLink() {
+        function disableImageProtection() {
+            document.addEventListener('contextmenu', function (e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    return;
+                }
+                e.preventDefault();
+                console.log("Right-click prevented.");
+            });
+            document.addEventListener('dragstart', function (e) {
+                if (e.target.tagName === 'IMG' || (e.target.classList && e.target.classList.contains('wallpaper-img'))) {
+                    e.preventDefault();
+                    console.log("Image dragging prevented.");
+                }
+            });
+        }
+    
+// On page load, check for ?id= in URL
+document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const wallpaperId = params.get('id');
     if (wallpaperId) {
-        // Wait until wallpapers are loaded
-        const checkLoaded = setInterval(() => {
-            if (allWallpapers && allWallpapers.length > 0) {
-                openPreviewModal(wallpaperId);
-                clearInterval(checkLoaded);
-            }
-        }, 200);
+        setTimeout(() => {
+            openPreviewModal(wallpaperId);
+        }, 500); // Delay to allow Firebase to load
     }
-}
+});
 
-// Call it after DOM is ready
-document.addEventListener('DOMContentLoaded', checkSharedLink);
-
-    </script>
+</script>
 </body>
 </html>
