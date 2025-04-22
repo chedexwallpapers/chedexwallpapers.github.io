@@ -1388,9 +1388,11 @@ document.addEventListener('DOMContentLoaded', () => {
 let currentPreviewWallpaperId;
 
 // Open Wallpaper Page by navigating
+// Open Wallpaper Page by navigating (SPA style for GitHub Pages)
 function openPreviewModal(wallpaperId) {
-    // Redirect to new URL with the wallpaper ID in the query
-    window.location.href = `${window.location.origin}/wallpaper?id=${wallpaperId}`;
+    const newUrl = `${window.location.origin}${window.location.pathname}?id=${wallpaperId}`;
+    window.location.href = newUrl;
+}
 }
 
 
