@@ -1442,21 +1442,24 @@
         }
 
         // Basic Image Protection (can be bypassed)
-        function disableImageProtection() {
-            document.addEventListener('contextmenu', function (e) {
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                    return;
-                }
-                e.preventDefault();
-                console.log("Right-click prevented.");
-            });
-            document.addEventListener('dragstart', function (e) {
-                if (e.target.tagName === 'IMG' || (e.target.classList && e.target.classList.contains('wallpaper-img'))) {
-                    e.preventDefault();
-                    console.log("Image dragging prevented.");
-                }
-            });
-        }
+      // Check for shared wallpaper link via URL param
+function checkSharedLink() {
+    const params = new URLSearchParams(window.location.search);
+    const wallpaperId = params.get('id');
+    if (wallpaperId) {
+        // Wait until wallpapers are loaded
+        const checkLoaded = setInterval(() => {
+            if (allWallpapers && allWallpapers.length > 0) {
+                openPreviewModal(wallpaperId);
+                clearInterval(checkLoaded);
+            }
+        }, 200);
+    }
+}
+
+// Call it after DOM is ready
+document.addEventListener('DOMContentLoaded', checkSharedLink);
+
     </script>
 </body>
 </html>
