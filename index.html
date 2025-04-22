@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheDex Wallpapers - Beautiful Wallpapers (Firebase)</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>CheDex Wallpapers - Beautiful Wallpapers (Firebase)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* Global Styles */
         * {
@@ -14,8 +15,8 @@
         }
 
         body {
-            background-color: #f5f1e8; /* Light beige background */
-            color: #5d4b35; /* Darker brown text for contrast */
+            background-color: #f5f1e8;
+            color: #5d4b35;
         }
 
         .container {
@@ -26,11 +27,11 @@
 
         /* Header */
         header {
-            background-color: #d9c7a0; /* Medium beige header */
-            color: #5d4b35; /* Dark brown text */
-            padding: 10px 0; /* Adjusted padding */
-            z-index: 1001; /* Higher than dropdown menu */
-            position: relative; /* Ensure z-index works */
+            background-color: #d9c7a0;
+            color: #5d4b35;
+            padding: 10px 0;
+            z-index: 1001;
+            position: relative;
         }
 
         .nav-container {
@@ -40,20 +41,19 @@
         }
 
         a {
-            text-decoration: none; /* Remove underline from all links */
-            color: inherit; /* Inherit the color from parent elements */
+            text-decoration: none;
+            color: inherit;
         }
 
         a:hover {
-            color: #8a7053; /* Darker accent color on hover */
+            color: #8a7053;
         }
 
-        .logo img { /* Style for logo image */
-            height: 40px; /* Adjust height as needed */
+        .logo img {
+            height: 40px;
             width: auto;
-            vertical-align: middle; /* Align image nicely */
+            vertical-align: middle;
         }
-
 
         nav ul {
             display: flex;
@@ -65,13 +65,13 @@
         }
 
         nav ul li a {
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            color: #8a7053; /* Darker accent on hover */
+            color: #8a7053;
         }
 
         /* Hero Section */
@@ -82,7 +82,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .hero-content h1 {
@@ -108,13 +108,13 @@
             border: none;
             border-radius: 5px 0 0 5px;
             font-size: 16px;
-            background-color: #f8f4eb; /* Very light beige */
+            background-color: #f8f4eb;
         }
 
         .search-bar button {
             padding: 10px 15px;
-            background-color: #8a7053; /* Darker accent color */
-            color: #f8f4eb; /* Very light beige text */
+            background-color: #8a7053;
+            color: #f8f4eb;
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
@@ -122,7 +122,7 @@
         }
 
         .search-bar button:hover {
-            background-color: #6b573e; /* Even darker on hover */
+            background-color: #6b573e;
         }
 
         /* Gallery Section */
@@ -138,11 +138,11 @@
         .section-title h2 {
             font-size: 36px;
             margin-bottom: 10px;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .section-title p {
-            color: #8a7053; /* Darker accent color */
+            color: #8a7053;
         }
 
         .categories {
@@ -155,81 +155,81 @@
         .category {
             padding: 8px 15px;
             margin: 5px;
-            background-color: #e8e0cf; /* Light beige */
+            background-color: #e8e0cf;
             border-radius: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .category:hover, .category.active {
-            background-color: #8a7053; /* Darker accent color */
-            color: #f8f4eb; /* Very light beige text */
+            background-color: #8a7053;
+            color: #f8f4eb;
         }
 
-    .wallpapers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-    gap: 20px; /* Space between items */
-}
+        .wallpapers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .wallpapers-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-    }
-}
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .wallpapers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media (max-width: 640px) {
-    .wallpapers-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
-    }
-}
+        @media (max-width: 640px) {
+            .wallpapers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .wallpaper-card {
-            background: #f8f4eb; /* Very light beige */
+            background: #f8f4eb;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(93, 75, 53, 0.1);
-            display: flex; /* Use flexbox for better control */
-            flex-direction: column; /* Stack image and info vertically */
+            display: flex;
+            flex-direction: column;
         }
 
         .wallpaper-img {
             height: 250px;
             background-size: cover;
             background-position: center;
-            cursor: pointer; /* Indicate it's clickable */
+            cursor: pointer;
         }
 
-       .wallpaper-info {
-    padding: 10px 12px;
-    gap: 6px;
-}
+        .wallpaper-info {
+            padding: 10px 12px;
+            gap: 6px;
+        }
 
-.wallpaper-info h3 {
-    margin-bottom: 0;
-    font-size: 15px;
-}
+        .wallpaper-info h3 {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
 
-.wallpaper-info p {
-    font-size: 12px;
-    margin-bottom: 6px;
-}
+        .wallpaper-info p {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
 
-.wallpaper-actions {
-    margin-top: 2px;
-    gap: 6px;
-}
+        .wallpaper-actions {
+            margin-top: 2px;
+            gap: 6px;
+        }
 
-.details-btn, .download-btn {
-    padding: 5px 10px;
-    font-size: 12px;
-}
+        .details-btn, .download-btn {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
 
         .download-btn {
-            background-color: #8a7053; /* Darker accent color */
-            color: #f8f4eb; /* Very light beige text */
+            background-color: #8a7053;
+            color: #f8f4eb;
             padding: 8px 15px;
             border: none;
             border-radius: 4px;
@@ -238,15 +238,15 @@
         }
 
         .download-btn:hover {
-            background-color: #6b573e; /* Even darker on hover */
+            background-color: #6b573e;
         }
 
-       /* Footer Styles */
+        /* Footer Styles */
         footer {
-            background-color: #d9c7a0; /* Medium beige */
-            color: #5d4b35; /* Dark brown text */
+            background-color: #d9c7a0;
+            color: #5d4b35;
             padding: 50px 0 20px;
-            border-top: 1px solid #c4b58b; /* Lighter medium beige */
+            border-top: 1px solid #c4b58b;
         }
 
         .footer-content {
@@ -256,16 +256,21 @@
             margin-bottom: 30px;
         }
 
+        .footer-column {
+            text-align: center;
+            padding: 0 15px;
+        }
+
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
-         .footer-column .logo img { /* Style for footer logo */
-             max-height: 35px; /* Adjust footer logo size */
-             margin-bottom: 10px;
-         }
+        .footer-column .logo img {
+            max-height: 35px;
+            margin-bottom: 10px;
+        }
 
         .footer-column ul {
             list-style: none;
@@ -277,48 +282,45 @@
         }
 
         .footer-column ul li a {
-            color: #6b573e; /* Darker brown */
+            color: #6b573e;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-column ul li a:hover {
-            color: #8a7053; /* Accent color */
+            color: #8a7053;
         }
 
         .footer-column p {
             font-size: 14px;
             line-height: 1.6;
-            color: #6b573e; /* Darker brown */
+            color: #6b573e;
+            margin-bottom: 15px;
         }
-        .footer-column {
-            text-align: center;
-        }
-        .footer-column .social-links {
-            justify-content: center; /* Centers the flex items (icons) */
-        }
+
         .social-links {
             display: flex;
+            justify-content: center;
             gap: 10px;
             margin-top: 15px;
         }
 
         .social-links .social-icon {
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
             font-size: 18px;
             transition: color 0.3s;
         }
 
         .social-links .social-icon:hover {
-            color: #8a7053; /* Accent color */
+            color: #8a7053;
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #c4b58b; /* Lighter medium beige */
+            border-top: 1px solid #c4b58b;
             font-size: 14px;
-            color: #6b573e; /* Darker brown */
+            color: #6b573e;
         }
 
         /* Font Awesome Icons */
@@ -339,7 +341,7 @@
         }
 
         .modal-content {
-            background-color: #f8f4eb; /* Very light beige */
+            background-color: #f8f4eb;
             padding: 30px;
             border-radius: 8px;
             max-width: 500px;
@@ -353,7 +355,7 @@
             right: 15px;
             font-size: 24px;
             cursor: pointer;
-            color: #8a7053; /* Darker accent color */
+            color: #8a7053;
         }
 
         /* Page Sections */
@@ -362,7 +364,7 @@
         }
 
         .page-content {
-            background-color: #f8f4eb; /* Very light beige */
+            background-color: #f8f4eb;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(93, 75, 53, 0.1);
             padding: 30px;
@@ -370,17 +372,17 @@
 
         .page-content h2 {
             margin-bottom: 20px;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .page-content p {
             margin-bottom: 15px;
             line-height: 1.6;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .page-content h3 {
-            color: #6b573e; /* Darker brown */
+            color: #6b573e;
             margin-top: 15px;
             margin-bottom: 10px;
         }
@@ -393,11 +395,11 @@
         .faq-question {
             font-weight: 600;
             margin-bottom: 10px;
-            color: #6b573e; /* Darker brown */
+            color: #6b573e;
         }
 
         .faq-answer {
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         /* Contact Form */
@@ -405,7 +407,8 @@
             display: grid;
             gap: 20px;
         }
-         .form-group {
+
+        .form-group {
             display: flex;
             flex-direction: column;
         }
@@ -413,18 +416,18 @@
         .form-group label {
             margin-bottom: 5px;
             font-weight: 500;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             padding: 10px;
-            border: 1px solid #d9c7a0; /* Medium beige */
+            border: 1px solid #d9c7a0;
             border-radius: 4px;
             font-size: 16px;
-            background-color: #f8f4eb; /* Very light beige */
-            color: #5d4b35; /* Dark brown text */
+            background-color: #f8f4eb;
+            color: #5d4b35;
         }
 
         .form-group textarea {
@@ -433,8 +436,8 @@
         }
 
         .submit-btn {
-            background-color: #a4bb86; /* Sage green accent */
-            color: #f8f4eb; /* Very light beige text */
+            background-color: #a4bb86;
+            color: #f8f4eb;
             padding: 12px;
             border: none;
             border-radius: 4px;
@@ -444,15 +447,14 @@
         }
 
         .submit-btn:hover {
-            background-color: #869b6b; /* Darker sage green */
+            background-color: #869b6b;
         }
-
 
         /* Search Results */
         .search-results-info {
             margin-bottom: 20px;
             font-style: italic;
-            color: #8a7053; /* Darker accent color */
+            color: #8a7053;
         }
 
         /* Utility Classes */
@@ -464,7 +466,7 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 15px; /* Adjust space */
+            gap: 15px;
         }
 
         /* Follow Us Text */
@@ -476,10 +478,10 @@
 
         /* Social Icons List */
         .social-icons,
-        .social-links { /* Shared style for nav and footer */
+        .social-links {
             display: flex;
             list-style: none;
-            gap: 10px; /* Adjust spacing between icons */
+            gap: 10px;
             margin: 0;
             padding: 0;
         }
@@ -488,162 +490,162 @@
         .social-icons a,
         .social-links a {
             font-size: 20px;
-            color: #5d4b35; /* Dark brown */
+            color: #5d4b35;
             transition: color 0.3s ease;
             text-decoration: none;
         }
 
         .social-icons a:hover,
         .social-links a:hover {
-            color: #8a7053; /* Accent color */
+            color: #8a7053;
         }
 
         /* Burger Menu */
         .burger-menu {
-            display: none; /* Hidden by default */
+            display: none;
             font-size: 24px;
             color: #5d4b35;
             cursor: pointer;
-            margin-left: 20px; /* Add space if needed */
+            margin-left: 20px;
         }
 
         /* Dropdown Menu */
         .dropdown-menu {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
-            right: -300px; /* Hide the menu off-screen */
+            right: -300px;
             width: 300px;
             height: 100%;
-            background-color: #f8f4eb; /* Very light beige */
+            background-color: #f8f4eb;
             box-shadow: -4px 0 6px rgba(93, 75, 53, 0.1);
-            transition: right 0.3s ease; /* Smooth slide-in transition */
+            transition: right 0.3s ease;
             z-index: 1000;
             padding: 20px;
             display: flex;
-            flex-direction: column; /* Stack items vertically */
-            align-items: flex-start; /* Align items to the left */
-            overflow-y: auto; /* Allow scrolling if content exceeds height */
+            flex-direction: column;
+            align-items: flex-start;
+            overflow-y: auto;
         }
 
         /* Show dropdown-menu when active */
         .dropdown-menu.active {
-            display: flex; /* Show the menu */
-            right: 0; /* Slide the menu into view */
+            display: flex;
+            right: 0;
         }
 
         /* Style for menu items */
         .dropdown-menu a {
-            display: block; /* Make each item take the full width */
+            display: block;
             padding: 12px 15px;
-            width: 100%; /* Full width for a clean look */
-            text-align: left; /* Align text to the left */
-            color: #5d4b35; /* Inherit text color */
-            text-decoration: none; /* Remove underline */
-            font-size: 18px; /* Make text bigger */
-            border-bottom: 1px solid #e8e0cf; /* Separator */
+            width: 100%;
+            text-align: left;
+            color: #5d4b35;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid #e8e0cf;
         }
 
         /* Remove bottom border from last item */
-        .dropdown-menu a:last-of-type { /* Target last link */
+        .dropdown-menu a:last-of-type {
             border-bottom: none;
         }
 
-         .dropdown-menu div { /* Style the social links container */
-             border-bottom: none; /* Remove border from this div */
-         }
+        .dropdown-menu div {
+            border-bottom: none;
+        }
 
         /* Hover effect */
         .dropdown-menu a:hover {
-            background-color: #e8e0cf; /* Light beige */
+            background-color: #e8e0cf;
             border-radius: 4px;
         }
 
         /* Overlay styles */
         .overlay {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(93, 75, 53, 0.5); /* Semi-transparent overlay */
+            background-color: rgba(93, 75, 53, 0.5);
             z-index: 999;
         }
 
         /* Show overlay when active */
         .overlay.active {
-            display: block; /* Show the overlay */
+            display: block;
         }
 
         /* Slide main content when menu is open */
         body.menu-open {
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden;
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-             header {
-                 padding: 10px 0; /* Reduce header padding */
-             }
-             .logo img {
-                 height: 35px; /* Smaller logo on mobile */
-             }
+            header {
+                padding: 10px 0;
+            }
+            .logo img {
+                height: 35px;
+            }
             .burger-menu {
-                display: block; /* Show burger menu */
+                display: block;
             }
 
             .nav-right .follow-text,
             .nav-right .social-icons {
-                display: none; /* Hide elements on smaller screens */
+                display: none;
             }
-             .hero-content h1 {
-                 font-size: 36px;
-             }
-             .hero-content p {
-                 font-size: 16px;
-             }
-             .search-bar input, .search-bar button {
-                 font-size: 14px;
-             }
-             .wallpapers-grid {
-                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid for smaller screens */
-             }
-             .footer-content {
-                 grid-template-columns: 1fr; /* Stack footer columns */
-                 text-align: center;
-             }
-             .footer-column .social-links {
-                 justify-content: center; /* Center social links in stacked view */
-             }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .search-bar input, .search-bar button {
+                font-size: 14px;
+            }
+            .wallpapers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-column .social-links {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
-             .wallpapers-grid {
-                 grid-template-columns: 1fr; /* Single column on very small screens */
-             }
-             .category {
-                 padding: 6px 12px;
-                 font-size: 14px;
-             }
-             .hero {
-                 height: 300px; /* Shorter hero */
-             }
-             .hero-content h1 {
-                 font-size: 28px;
-             }
-             .hero-content p {
-                 font-size: 14px;
-             }
+            .wallpapers-grid {
+                grid-template-columns: 1fr;
+            }
+            .category {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            .hero {
+                height: 300px;
+            }
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            .hero-content p {
+                font-size: 14px;
+            }
         }
 
         /* Loading indicator style */
         #loadingIndicator {
             text-align: center;
-            padding: 40px 20px; /* More padding */
+            padding: 40px 20px;
             font-size: 1.2em;
             color: #8a7053;
-            grid-column: 1 / -1; /* Span across all grid columns */
+            grid-column: 1 / -1;
         }
 
         /* Pagination Styles */
@@ -655,36 +657,35 @@
         .pagination-btn {
             padding: 8px 15px;
             margin: 0 5px;
-            background-color: #e8e0cf; /* Light beige */
-            border: 1px solid #d9c7a0; /* Medium beige */
+            background-color: #e8e0cf;
+            border: 1px solid #d9c7a0;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
-            color: #5d4b35; /* Dark brown text */
+            color: #5d4b35;
             font-size: 14px;
         }
 
         .pagination-btn:hover, .pagination-btn.active {
-            background-color: #8a7053; /* Darker accent color */
-            color: #f8f4eb; /* Very light beige text */
+            background-color: #8a7053;
+            color: #f8f4eb;
             border-color: #8a7053;
         }
 
         .pagination-btn:disabled {
-            background-color: #f0ebe0; /* Lighter disabled background */
-            color: #a89c8c; /* Lighter disabled text */
+            background-color: #f0ebe0;
+            color: #a89c8c;
             cursor: not-allowed;
             border-color: #e8e0cf;
         }
-
-
     </style>
 </head>
 <body>
     <header>
         <div class="container nav-container">
             <a href="#" class="logo" onclick="showSection('home'); return false;">
-                <img src="https://firebasestorage.googleapis.com/v0/b/online-storage-314fb.appspot.com/o/chedex%20wallpapers%20logo.svg?alt=media&token=fb2a2baf-1aaf-4013-9122-206d5ffe4eb8" alt="CheDex Wallpapers Logo"> </a>
+                <img src="https://firebasestorage.googleapis.com/v0/b/online-storage-314fb.appspot.com/o/chedex%20wallpapers%20logo.svg?alt=media&token=fb2a2baf-1aaf-4013-9122-206d5ffe4eb8" alt="CheDex Wallpapers Logo">
+            </a>
 
             <div class="nav-right">
                 <span class="follow-text">Follow us on:</span>
@@ -696,7 +697,8 @@
                 </ul>
 
                 <div class="burger-menu" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i> </div>
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
 
             <div class="dropdown-menu" id="dropdownMenu">
@@ -706,7 +708,7 @@
                 <a href="#" onclick="showSection('contact'); closeMenu(); return false;">Contact</a>
                 <a href="#" onclick="showSection('terms'); closeMenu(); return false;">Terms of Use</a>
                 <a href="#" onclick="showSection('privacy'); closeMenu(); return false;">Privacy Policy</a>
-                 <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #e8e0cf;">
+                <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #e8e0cf;">
                     <span style="font-weight: bold; color: #5d4b35; display: block; margin-bottom: 10px;">Follow us:</span>
                     <ul class="social-links" style="justify-content: flex-start;">
                         <li><a href="https://www.facebook.com/chedexsonlinestore" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -717,14 +719,15 @@
                 </div>
             </div>
         </div>
-         <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="container hero-content">
                 <h1>Discover Amazing Wallpapers</h1>
-                <p>Enhance your device with our stunning collection of high-quality wallpapers from CheDex Wallpapers.</p> <div class="search-bar">
+                <p>Enhance your device with our stunning collection of high-quality wallpapers from CheDex Wallpapers.</p>
+                <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Search wallpapers by title or description...">
                     <button onclick="searchWallpapers()">Search</button>
                 </div>
@@ -744,11 +747,10 @@
                 <div class="category" onclick="filterWallpapers('animals')">Animals</div>
                 <div class="category" onclick="filterWallpapers('space')">Space</div>
                 <div class="category" onclick="filterWallpapers('urban')">Urban</div>
-                 </div>
+            </div>
 
             <div id="loadingIndicator">Loading wallpapers...</div>
-            <div class="wallpapers-grid" id="wallpapersGrid">
-                </div>
+            <div class="wallpapers-grid" id="wallpapersGrid"></div>
             <div class="pagination-container" id="paginationControlsGallery"></div>
         </section>
 
@@ -760,29 +762,33 @@
 
             <div class="search-results-info" id="resultsInfo"></div>
 
-            <div class="wallpapers-grid" id="searchResultsGrid">
-                </div>
-             <div class="pagination-container" id="paginationControlsSearch"></div>
+            <div class="wallpapers-grid" id="searchResultsGrid"></div>
+            <div class="pagination-container" id="paginationControlsSearch"></div>
         </section>
 
         <section id="about" class="page-section container hidden">
-             <div class="section-title">
+            <div class="section-title">
                 <h2>About Us</h2>
-                <p>Learn more about CheDex Wallpapers</p> </div>
+                <p>Learn more about CheDex Wallpapers</p>
+            </div>
 
             <div class="page-content">
-                <h2>Welcome to CheDex Wallpapers</h2> <p>CheDex Wallpapers is a premier destination for high-quality, beautiful wallpapers for all your devices. Founded in 2023, we've been committed to providing the best wallpaper experience for our users.</p> <p>Our team of curators and designers work tirelessly to bring you stunning visuals that transform your digital devices into personalized works of art. From breathtaking nature scenes to abstract masterpieces, we have something for everyone.</p>
+                <h2>Welcome to CheDex Wallpapers</h2>
+                <p>CheDex Wallpapers is a premier destination for high-quality, beautiful wallpapers for all your devices. Founded in 2023, we've been committed to providing the best wallpaper experience for our users.</p>
+                <p>Our team of curators and designers work tirelessly to bring you stunning visuals that transform your digital devices into personalized works of art. From breathtaking nature scenes to abstract masterpieces, we have something for everyone.</p>
 
-                <p>At CheDex Wallpapers, we believe that your device's background should reflect your personality and style. That's why we're constantly updating our collection with fresh, high-resolution wallpapers that cater to various tastes and preferences.</p> <p>Our mission is simple: to provide beautiful, high-quality wallpapers that inspire and delight our users every day.</p>
+                <p>At CheDex Wallpapers, we believe that your device's background should reflect your personality and style. That's why we're constantly updating our collection with fresh, high-resolution wallpapers that cater to various tastes and preferences.</p>
+                <p>Our mission is simple: to provide beautiful, high-quality wallpapers that inspire and delight our users every day.</p>
 
                 <h3 style="margin-top: 20px; margin-bottom: 10px;">Our Team</h3>
-                <p>CheDex Wallpapers is powered by a talented team of designers, developers, and wallpaper enthusiasts who are passionate about creating the best wallpaper experience for our users.</p> <h3 style="margin-top: 20px; margin-bottom: 10px;">Join Our Community</h3>
+                <p>CheDex Wallpapers is powered by a talented team of designers, developers, and wallpaper enthusiasts who are passionate about creating the best wallpaper experience for our users.</p>
+                <h3 style="margin-top: 20px; margin-bottom: 10px;">Join Our Community</h3>
                 <p>We love hearing from our users! Feel free to reach out to us with any feedback, suggestions, or just to say hello. Join our growing community of wallpaper enthusiasts and let's make your devices look amazing together.</p>
             </div>
         </section>
 
         <section id="faq" class="page-section container hidden">
-             <div class="section-title">
+            <div class="section-title">
                 <h2>Frequently Asked Questions</h2>
                 <p>Get answers to common questions</p>
             </div>
@@ -795,7 +801,8 @@
 
                 <div class="faq-item">
                     <div class="faq-question">Are all wallpapers free to download?</div>
-                    <div class="faq-answer">Yes, all wallpapers on CheDex Wallpapers are completely free to download and use for personal purposes.</div> </div>
+                    <div class="faq-answer">Yes, all wallpapers on CheDex Wallpapers are completely free to download and use for personal purposes.</div>
+                </div>
 
                 <div class="faq-item">
                     <div class="faq-question">What resolution are the wallpapers?</div>
@@ -814,7 +821,8 @@
 
                 <div class="faq-item">
                     <div class="faq-question">Can I use these wallpapers for commercial purposes?</div>
-                    <div class="faq-answer">The wallpapers on CheDex Wallpapers are intended for personal use only. For commercial licensing inquiries, please contact us through our Contact page.</div> </div>
+                    <div class="faq-answer">The wallpapers on CheDex Wallpapers are intended for personal use only. For commercial licensing inquiries, please contact us through our Contact page.</div>
+                </div>
 
                 <div class="faq-item">
                     <div class="faq-question">How do I set a downloaded wallpaper as my background?</div>
@@ -830,9 +838,10 @@
         </section>
 
         <section id="contact" class="page-section container hidden">
-             <div class="section-title">
+            <div class="section-title">
                 <h2>Contact Us</h2>
-                <p>Get in touch with the CheDex Wallpapers team</p> </div>
+                <p>Get in touch with the CheDex Wallpapers team</p>
+            </div>
 
             <div class="page-content">
                 <p>Have a question, suggestion, or just want to say hello? We'd love to hear from you! Fill out the form below and our team will get back to you as soon as possible.</p>
@@ -863,27 +872,35 @@
 
                 <div style="margin-top: 30px;">
                     <h3>Contact Information</h3>
-                    <p>Email: info@chedexwallpapers.com</p> <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@chedexwallpapers.com</p>
+                    <p>Phone: (555) 123-4567</p>
                     <p>Address: 123 Wallpaper St, Digital City, DC 12345</p>
                 </div>
             </div>
         </section>
 
         <section id="terms" class="page-section container hidden">
-             <div class="section-title">
+            <div class="section-title">
                 <h2>Terms of Use</h2>
                 <p>Please read our terms carefully</p>
             </div>
 
             <div class="page-content">
-                 <h3>1. Acceptance of Terms</h3>
-                <p>By accessing and using the CheDex Wallpapers website, you accept and agree to be bound by the terms and provisions of this agreement.</p> <h3>2. Use License</h3>
-                <p>Permission is granted to temporarily download one copy of the materials on CheDex Wallpapers's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p> <h3>3. Disclaimer</h3>
-                <p>The materials on CheDex Wallpapers's website are provided on an 'as is' basis. CheDex Wallpapers makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p> <h3>4. Limitations</h3>
-                <p>In no event shall CheDex Wallpapers or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on CheDex Wallpapers's website, even if CheDex Wallpapers or a CheDex Wallpapers authorized representative has been notified orally or in writing of the possibility of such damage.</p> <h3>5. Revisions and Errata</h3>
-                <p>The materials appearing on CheDex Wallpapers's website could include technical, typographical, or photographic errors. CheDex Wallpapers does not warrant that any of the materials on its website are accurate, complete or current. CheDex Wallpapers may make changes to the materials contained on its website at any time without notice.</p> <h3>6. Links</h3>
-                <p>CheDex Wallpapers has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by CheDex Wallpapers of the site. Use of any such linked website is at the user's own risk.</p> <h3>7. Modifications</h3>
-                <p>CheDex Wallpapers may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p> <h3>8. Governing Law</h3>
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using the CheDex Wallpapers website, you accept and agree to be bound by the terms and provisions of this agreement.</p>
+                <h3>2. Use License</h3>
+                <p>Permission is granted to temporarily download one copy of the materials on CheDex Wallpapers's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+                <h3>3. Disclaimer</h3>
+                <p>The materials on CheDex Wallpapers's website are provided on an 'as is' basis. CheDex Wallpapers makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                <h3>4. Limitations</h3>
+                <p>In no event shall CheDex Wallpapers or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on CheDex Wallpapers's website, even if CheDex Wallpapers or a CheDex Wallpapers authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+                <h3>5. Revisions and Errata</h3>
+                <p>The materials appearing on CheDex Wallpapers's website could include technical, typographical, or photographic errors. CheDex Wallpapers does not warrant that any of the materials on its website are accurate, complete or current. CheDex Wallpapers may make changes to the materials contained on its website at any time without notice.</p>
+                <h3>6. Links</h3>
+                <p>CheDex Wallpapers has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by CheDex Wallpapers of the site. Use of any such linked website is at the user's own risk.</p>
+                <h3>7. Modifications</h3>
+                <p>CheDex Wallpapers may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+                <h3>8. Governing Law</h3>
                 <p>These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
             </div>
         </section>
@@ -914,9 +931,9 @@
                 <p>We may change this Privacy Policy from time to time. If we make changes, we will notify you by revising the date at the top of the policy and, in some cases, we may provide you with additional notice.</p>
 
                 <h3>7. Contact Us</h3>
-                <p>If you have any questions about this Privacy Policy, please contact us at privacy@chedexwallpapers.com.</p> </div>
+                <p>If you have any questions about this Privacy Policy, please contact us at privacy@chedexwallpapers.com.</p>
+            </div>
         </section>
-
     </main>
 
     <div class="modal" id="previewModal">
@@ -929,14 +946,15 @@
         </div>
     </div>
 
-
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                     <a href="#" class="logo" onclick="showSection('home'); return false;">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/online-storage-314fb.appspot.com/o/chedex%20wallpapers%20logo.svg?alt=media&token=fb2a2baf-1aaf-4013-9122-206d5ffe4eb8" alt="CheDex Wallpapers Logo"> </a>
-                    <p>Discover amazing wallpapers for your devices. High quality, free downloads from CheDex Wallpapers.</p> <div class="social-links">
+                    <a href="#" class="logo" onclick="showSection('home'); return false;">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/online-storage-314fb.appspot.com/o/chedex%20wallpapers%20logo.svg?alt=media&token=fb2a2baf-1aaf-4013-9122-206d5ffe4eb8" alt="CheDex Wallpapers Logo">
+                    </a>
+                    <p>Discover amazing wallpapers for your devices. High quality, free downloads from CheDex Wallpapers.</p>
+                    <div class="social-links">
                         <a href="https://www.facebook.com/chedexsonlinestore" target="_blank" title="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" target="_blank" title="Threads" class="social-icon"><i class="fab fa-threads"></i></a>
                         <a href="#" target="_blank" title="Pinterest" class="social-icon"><i class="fab fa-pinterest"></i></a>
@@ -963,20 +981,23 @@
                         <li><a href="#" onclick="filterWallpapers('animals')">Animals</a></li>
                         <li><a href="#" onclick="filterWallpapers('space')">Space</a></li>
                         <li><a href="#" onclick="filterWallpapers('urban')">Urban</a></li>
-                         </ul>
+                    </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> info@chedexwallpapers.com</li> <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+ <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@chedexwallpapers.com</li>
+                       
                         <li><i class="fas fa-map-marker-alt"></i> 123 Wallpaper St, Digital City, DC 12345</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2023-2025 CheDex Wallpapers. All Rights Reserved.</p> </div>
+                <p>&copy; 2023-2025 CheDex Wallpapers. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -986,13 +1007,13 @@
     <script>
         // IMPORTANT: Replace with your actual Firebase project configuration
         const firebaseConfig = {
-             apiKey: "AIzaSyD5s-oLTsM_RhsaDiVRWdybjtipeCspXmY", // Example, replace with yours
-             authDomain: "online-storage-314fb.firebaseapp.com", // Example, replace with yours
-             databaseURL: "https://online-storage-314fb-default-rtdb.asia-southeast1.firebasedatabase.app", // Example, replace with yours
-             projectId: "online-storage-314fb", // Example, replace with yours
-             storageBucket: "online-storage-314fb.appspot.com", // Example, replace with yours
-             messagingSenderId: "440072322730", // Example, replace with yours
-             appId: "1:440072322730:web:3eb0275937b8ada5ae5ad3", // Example, replace with yours
+            apiKey: "AIzaSyD5s-oLTsM_RhsaDiVRWdybjtipeCspXmY",
+            authDomain: "online-storage-314fb.firebaseapp.com",
+            databaseURL: "https://online-storage-314fb-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "online-storage-314fb",
+            storageBucket: "online-storage-314fb.appspot.com",
+            messagingSenderId: "440072322730",
+            appId: "1:440072322730:web:3eb0275937b8ada5ae5ad3",
         };
 
         // Initialize Firebase
@@ -1000,10 +1021,10 @@
         const database = firebase.database();
 
         // Global variables
-        let allWallpapers = []; // Holds all fetched wallpapers
-        let currentWallpapers = []; // Holds the currently filtered/searched wallpapers for pagination
+        let allWallpapers = [];
+        let currentWallpapers = [];
         let currentPage = 1;
-        const itemsPerPage = 16; // Adjust how many wallpapers per page
+        const itemsPerPage = 16;
 
         // DOM Elements
         const loadingIndicator = document.getElementById('loadingIndicator');
@@ -1025,30 +1046,26 @@
                 const dropdownMenu = document.getElementById('dropdownMenu');
                 const burgerMenu = document.querySelector('.burger-menu');
 
-                // Check if the click is outside the menu and the burger icon
                 if (dropdownMenu.classList.contains('active') && !dropdownMenu.contains(event.target) && !burgerMenu.contains(event.target)) {
                     closeMenu();
                 }
             });
 
-             // Prevent clicks inside the dropdown from closing it
             document.getElementById('dropdownMenu').addEventListener('click', function (event) {
-                 // Allow clicks on links inside the menu to proceed
-                 if (event.target.tagName !== 'A') {
-                      event.stopPropagation();
-                 }
+                if (event.target.tagName !== 'A') {
+                    event.stopPropagation();
+                }
             });
 
             disableImageProtection();
         });
 
-
         // Load wallpapers from Firebase Realtime Database
         function loadWallpapersFromFirebase() {
             const wallpapersRef = database.ref('wallpapers');
             loadingIndicator.style.display = 'block';
-            galleryGrid.innerHTML = ''; // Clear grid while loading
-            paginationControlsGallery.innerHTML = ''; // Clear pagination
+            galleryGrid.innerHTML = '';
+            paginationControlsGallery.innerHTML = '';
 
             wallpapersRef.once('value', (snapshot) => {
                 const data = snapshot.val();
@@ -1058,10 +1075,10 @@
                     allWallpapers = Object.keys(data).map(key => ({
                         id: key,
                         ...data[key]
-                    })).filter(w => w.status === 'published'); // Store only published ones globally
+                    })).filter(w => w.status === 'published');
 
-                    currentWallpapers = [...allWallpapers]; // Initially, current = all
-                    currentPage = 1; // Reset to page 1
+                    currentWallpapers = [...allWallpapers];
+                    currentPage = 1;
                     displayWallpapers(currentWallpapers, 'wallpapersGrid', currentPage);
                     setupPagination(currentWallpapers.length, 'paginationControlsGallery', 'wallpapersGrid');
                 } else {
@@ -1079,16 +1096,14 @@
         // Display wallpapers for a specific page
         function displayWallpapers(wallpapersArray, containerId, page) {
             const container = document.getElementById(containerId);
-            container.innerHTML = ''; // Clear existing content
-            page = page || 1; // Default to page 1 if not provided
+            container.innerHTML = '';
+            page = page || 1;
 
             if (!wallpapersArray || wallpapersArray.length === 0) {
                 container.innerHTML = '<p>No wallpapers found matching your criteria.</p>';
-                // Ensure loading indicator is hidden if it was visible
-                 if(loadingIndicator) loadingIndicator.style.display = 'none';
-                // Clear associated pagination
-                 const paginationContainerId = containerId === 'wallpapersGrid' ? 'paginationControlsGallery' : 'paginationControlsSearch';
-                 document.getElementById(paginationContainerId).innerHTML = '';
+                if(loadingIndicator) loadingIndicator.style.display = 'none';
+                const paginationContainerId = containerId === 'wallpapersGrid' ? 'paginationControlsGallery' : 'paginationControlsSearch';
+                document.getElementById(paginationContainerId).innerHTML = '';
                 return;
             }
 
@@ -1097,7 +1112,7 @@
             const paginatedItems = wallpapersArray.slice(startIndex, endIndex);
 
             paginatedItems.forEach(wallpaper => {
-                if (wallpaper.status !== 'published') return; // Double check
+                if (wallpaper.status !== 'published') return;
 
                 const wallpaperCard = document.createElement('div');
                 wallpaperCard.className = 'wallpaper-card';
@@ -1105,9 +1120,10 @@
                 wallpaperCard.innerHTML = `
                     <div class="wallpaper-img" style="background-image: url('${wallpaper.coverPhoto || '/api/placeholder/280/200?text=No+Preview'}')" onclick="openPreviewModal('${wallpaper.id}')"></div>
                     <div class="wallpaper-info">
-                         <div> <h3>${wallpaper.title || 'Untitled'}</h3>
-                             <p>${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}</p>
-                         </div>
+                        <div>
+                            <h3>${wallpaper.title || 'Untitled'}</h3>
+                            <p>${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}</p>
+                        </div>
                         <div class="wallpaper-actions">
                             <button class="download-btn" onclick="triggerDownload('${wallpaper.id}')">Download</button>
                         </div>
@@ -1115,17 +1131,16 @@
                 `;
                 container.appendChild(wallpaperCard);
             });
-             // Ensure loading indicator is hidden after displaying
-             if(loadingIndicator) loadingIndicator.style.display = 'none';
+            if(loadingIndicator) loadingIndicator.style.display = 'none';
         }
 
         // Setup pagination controls
         function setupPagination(totalItems, paginationContainerId, gridContainerId) {
             const paginationContainer = document.getElementById(paginationContainerId);
-            paginationContainer.innerHTML = ''; // Clear existing controls
+            paginationContainer.innerHTML = '';
             const pageCount = Math.ceil(totalItems / itemsPerPage);
 
-            if (pageCount <= 1) return; // No pagination needed for 1 page or less
+            if (pageCount <= 1) return;
 
             // Previous Button
             const prevButton = document.createElement('button');
@@ -1141,7 +1156,7 @@
             };
             paginationContainer.appendChild(prevButton);
 
-            // Page Number Buttons (simplified for brevity, could add ellipses for many pages)
+            // Page Number Buttons
             for (let i = 1; i <= pageCount; i++) {
                 const pageButton = document.createElement('button');
                 pageButton.textContent = i;
@@ -1172,41 +1187,40 @@
             paginationContainer.appendChild(nextButton);
         }
 
-        // Update state of pagination buttons (active page, disabled prev/next)
+        // Update state of pagination buttons
         function updatePaginationButtons(paginationContainerId, pageCount) {
-             const paginationContainer = document.getElementById(paginationContainerId);
-             const buttons = paginationContainer.querySelectorAll('.pagination-btn');
-             buttons.forEach(button => {
-                 button.classList.remove('active');
-                 button.disabled = false; // Re-enable all first
+            const paginationContainer = document.getElementById(paginationContainerId);
+            const buttons = paginationContainer.querySelectorAll('.pagination-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                button.disabled = false;
 
-                 const pageNum = parseInt(button.textContent);
-                 if (!isNaN(pageNum) && pageNum === currentPage) {
-                     button.classList.add('active');
-                 }
+                const pageNum = parseInt(button.textContent);
+                if (!isNaN(pageNum) && pageNum === currentPage) {
+                    button.classList.add('active');
+                }
 
-                 if (button.textContent === 'Previous') {
-                     button.disabled = currentPage === 1;
-                 } else if (button.textContent === 'Next') {
-                     button.disabled = currentPage === pageCount;
-                 }
-             });
-         }
-
+                if (button.textContent === 'Previous') {
+                    button.disabled = currentPage === 1;
+                } else if (button.textContent === 'Next') {
+                    button.disabled = currentPage === pageCount;
+                }
+            });
+        }
 
         // Trigger the download
         function triggerDownload(wallpaperId) {
-            const wallpaper = allWallpapers.find(w => w.id === wallpaperId); // Search in allWallpapers
+            const wallpaper = allWallpapers.find(w => w.id === wallpaperId);
             if (wallpaper && wallpaper.image) {
                 const link = document.createElement('a');
                 link.href = wallpaper.image;
-                const filename = `${(wallpaper.title || 'wallpaper').replace(/\s+/g, '_')}_${wallpaper.resolution || ''}.jpg`; // Better filename
+                const filename = `${(wallpaper.title || 'wallpaper').replace(/\s+/g, '_')}_${wallpaper.resolution || ''}.jpg`;
                 link.download = filename;
                 link.style.display = 'none';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                trackDownload(wallpaperId); // Optional tracking
+                trackDownload(wallpaperId);
             } else {
                 console.error(`Wallpaper data or image URL not found for ID ${wallpaperId}.`);
                 alert("Sorry, couldn't find the wallpaper file for download.");
@@ -1215,63 +1229,55 @@
 
         // Optional: Track downloads in Firebase
         function trackDownload(wallpaperId) {
-            // Check if Firebase database object exists before using it
-             if (typeof database !== 'undefined' && database.ref) {
-                 const downloadsRef = database.ref('downloads/' + wallpaperId);
-                 downloadsRef.transaction((currentCount) => {
-                     return (currentCount || 0) + 1;
-                 }).catch(error => {
-                     console.warn("Could not track download in Firebase:", error); // Log as warning, not critical error
-                 });
-             } else {
-                 console.warn("Firebase database not initialized, download tracking skipped.");
-             }
+            if (typeof database !== 'undefined' && database.ref) {
+                const downloadsRef = database.ref('downloads/' + wallpaperId);
+                downloadsRef.transaction((currentCount) => {
+                    return (currentCount || 0) + 1;
+                }).catch(error => {
+                    console.warn("Could not track download in Firebase:", error);
+                });
+            } else {
+                console.warn("Firebase database not initialized, download tracking skipped.");
+            }
         }
 
         // Filter wallpapers by category
-       function filterWallpapers(category) {
-            // Update active category button style
+        function filterWallpapers(category) {
             document.querySelectorAll('.category').forEach(cat => {
                 cat.classList.remove('active');
-                 // Use dataset or direct comparison
-                 if (cat.getAttribute('onclick') === `filterWallpapers('${category}')`) {
-                     cat.classList.add('active');
-                 }
+                if (cat.getAttribute('onclick') === `filterWallpapers('${category}')`) {
+                    cat.classList.add('active');
+                }
             });
 
-            // Filter based on the globally stored wallpapers
-            const publishedWallpapers = allWallpapers; // Already filtered on load
+            const publishedWallpapers = allWallpapers;
             currentWallpapers = category === 'all' ?
                 [...publishedWallpapers] :
                 publishedWallpapers.filter(w => w.category && w.category.toLowerCase() === category.toLowerCase());
 
-            currentPage = 1; // Reset to page 1
+            currentPage = 1;
             displayWallpapers(currentWallpapers, 'wallpapersGrid', currentPage);
             setupPagination(currentWallpapers.length, 'paginationControlsGallery', 'wallpapersGrid');
 
-
-            // Hide search results, show main gallery
             document.getElementById('searchResults').classList.add('hidden');
             document.getElementById('gallery').classList.remove('hidden');
             const heroSection = document.getElementById('home');
-             if (heroSection) heroSection.classList.remove('hidden');
+            if (heroSection) heroSection.classList.remove('hidden');
 
-            // Scroll gallery into view smoothly
-             document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
 
         // Search wallpapers
         function searchWallpapers() {
             const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
 
             if (searchTerm === '') {
-                filterWallpapers('all'); // Show all if search is cleared
+                filterWallpapers('all');
                 return;
             }
 
-            const publishedWallpapers = allWallpapers; // Already filtered on load
-            currentWallpapers = publishedWallpapers.filter(wallpaper => // Update currentWallpapers
+            const publishedWallpapers = allWallpapers;
+            currentWallpapers = publishedWallpapers.filter(wallpaper =>
                 (wallpaper.title && wallpaper.title.toLowerCase().includes(searchTerm)) ||
                 (wallpaper.description && wallpaper.description.toLowerCase().includes(searchTerm)) ||
                 (wallpaper.category && wallpaper.category.toLowerCase().includes(searchTerm))
@@ -1280,17 +1286,15 @@
             document.getElementById('searchQuery').textContent = `Results for: "${searchTerm}"`;
             document.getElementById('resultsInfo').textContent = `Found ${currentWallpapers.length} wallpaper(s) matching your search.`;
 
-            currentPage = 1; // Reset to page 1 for search results
+            currentPage = 1;
             displayWallpapers(currentWallpapers, 'searchResultsGrid', currentPage);
-             setupPagination(currentWallpapers.length, 'paginationControlsSearch', 'searchResultsGrid'); // Setup pagination for search
+            setupPagination(currentWallpapers.length, 'paginationControlsSearch', 'searchResultsGrid');
 
-
-            document.getElementById('gallery').classList.add('hidden'); // Hide main gallery
-             document.getElementById('paginationControlsGallery').innerHTML = ''; // Clear gallery pagination
-            document.getElementById('searchResults').classList.remove('hidden'); // Show search results section
+            document.getElementById('gallery').classList.add('hidden');
+            document.getElementById('paginationControlsGallery').innerHTML = '';
+            document.getElementById('searchResults').classList.remove('hidden');
             document.getElementById('searchResults').scrollIntoView({ behavior: 'smooth' });
         }
-
 
         // Show section and hide others
         function showSection(sectionId) {
@@ -1300,40 +1304,32 @@
                 if (elem) elem.classList.add('hidden');
             });
 
-             // Hide pagination containers initially
-             if(paginationControlsGallery) paginationControlsGallery.style.display = 'none';
-             if(paginationControlsSearch) paginationControlsSearch.style.display = 'none';
+            if(paginationControlsGallery) paginationControlsGallery.style.display = 'none';
+            if(paginationControlsSearch) paginationControlsSearch.style.display = 'none';
 
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.remove('hidden');
-                 // Special handling for gallery/home to ensure related elements show
-                 if (sectionId === 'home' || sectionId === 'gallery') {
-                     document.getElementById('home')?.classList.remove('hidden'); // Ensure hero is visible
-                     document.getElementById('gallery')?.classList.remove('hidden'); // Ensure gallery section is visible
-                     if(paginationControlsGallery) paginationControlsGallery.style.display = 'block'; // Show gallery pagination
-                     // Optionally trigger a default filter if needed
-                     if (!document.querySelector('.category.active')) {
-                         filterWallpapers('all'); // Ensure something is displayed if navigating directly
-                     }
-                 } else if (sectionId === 'searchResults') {
-                      if(paginationControlsSearch) paginationControlsSearch.style.display = 'block'; // Show search pagination
-                 }
-
+                if (sectionId === 'home' || sectionId === 'gallery') {
+                    document.getElementById('home')?.classList.remove('hidden');
+                    document.getElementById('gallery')?.classList.remove('hidden');
+                    if(paginationControlsGallery) paginationControlsGallery.style.display = 'block';
+                    if (!document.querySelector('.category.active')) {
+                        filterWallpapers('all');
+                    }
+                } else if (sectionId === 'searchResults') {
+                    if(paginationControlsSearch) paginationControlsSearch.style.display = 'block';
+                }
             } else {
-                 // Default to home/gallery view if sectionId is invalid
-                 document.getElementById('home')?.classList.remove('hidden');
-                 document.getElementById('gallery')?.classList.remove('hidden');
-                 if(paginationControlsGallery) paginationControlsGallery.style.display = 'block';
-                 filterWallpapers('all'); // Default view
+                document.getElementById('home')?.classList.remove('hidden');
+                document.getElementById('gallery')?.classList.remove('hidden');
+                if(paginationControlsGallery) paginationControlsGallery.style.display = 'block';
+                filterWallpapers('all');
             }
 
-            // Close menu if open
             closeMenu();
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
 
         // Handle Contact Form Submission (Simulation)
         function handleContactForm() {
@@ -1342,78 +1338,50 @@
             const message = document.getElementById('contactMessage').value;
 
             if (!name || !email || !message) {
-                 alert('Please fill in all fields.');
-                 return;
+                alert('Please fill in all fields.');
+                return;
             }
             if (!/\S+@\S+\.\S+/.test(email)) {
-                 alert('Please enter a valid email address.');
-                 return;
+                alert('Please enter a valid email address.');
+                return;
             }
 
-            // Simulation - replace with actual backend/Firebase logic if needed
-             alert('Thank you for your message! We will get back to you soon. (This is a demo)');
-             document.querySelector('.contact-form').reset();
-
-             /*
-            // OPTIONAL: Firebase saving example
-            if (typeof database !== 'undefined' && database.ref) {
-                const contactRef = database.ref('contacts');
-                contactRef.push({
-                    name: name,
-                    email: email,
-                    subject: document.getElementById('contactSubject').value,
-                    message: message,
-                    timestamp: firebase.database.ServerValue.TIMESTAMP // Use server timestamp
-                }).then(() => {
-                    alert('Thank you for your message! We will get back to you soon.');
-                    document.querySelector('.contact-form').reset();
-                }).catch((error) => {
-                    console.error("Error sending message to Firebase: ", error);
-                    alert('Sorry, there was an error sending your message. Please try again later.');
-                });
-            } else {
-                 alert('Thank you for your message! (Firebase not configured for saving)');
-                 document.querySelector('.contact-form').reset();
-            }
-            */
+            alert('Thank you for your message! We will get back to you soon. (This is a demo)');
+            document.querySelector('.contact-form').reset();
         }
 
         // Open Wallpaper Preview Modal
         function openPreviewModal(wallpaperId) {
-            const wallpaper = allWallpapers.find(w => w.id === wallpaperId); // Use allWallpapers
+            const wallpaper = allWallpapers.find(w => w.id === wallpaperId);
 
             if (wallpaper && wallpaper.status === 'published') {
                 document.getElementById('previewTitle').textContent = wallpaper.title;
-                document.getElementById('previewCoverPhoto').src = wallpaper.image || '/api/placeholder/500/400?text=No+Image'; // Show full image or placeholder
+                document.getElementById('previewCoverPhoto').src = wallpaper.image || '/api/placeholder/500/400?text=No+Image';
                 document.getElementById('previewCoverPhoto').alt = wallpaper.title;
                 document.getElementById('previewDesc').textContent = wallpaper.description || 'No description available.';
 
-                // Re-attach event listener to the download button inside the modal
                 const downloadButton = document.getElementById('downloadBtnPreview');
-                 // Clone and replace to remove old listeners
-                 const newDownloadButton = downloadButton.cloneNode(true);
-                 downloadButton.parentNode.replaceChild(newDownloadButton, downloadButton);
-                 // Add new listener
+                const newDownloadButton = downloadButton.cloneNode(true);
+                downloadButton.parentNode.replaceChild(newDownloadButton, downloadButton);
                 newDownloadButton.addEventListener('click', () => {
-                    triggerDownload(wallpaper.id); // Use the correct ID
-                    closePreviewModal(); // Optionally close modal after clicking download
+                    triggerDownload(wallpaper.id);
+                    closePreviewModal();
                 });
 
                 document.getElementById('previewModal').style.display = 'flex';
             } else {
-                 console.warn(`Preview requested for non-existent or unpublished wallpaper ID: ${wallpaperId}`);
-                 alert("Could not load wallpaper preview.");
+                console.warn(`Preview requested for non-existent or unpublished wallpaper ID: ${wallpaperId}`);
+                alert("Could not load wallpaper preview.");
             }
         }
 
         // Close Preview Modal
         function closePreviewModal() {
             const modal = document.getElementById('previewModal');
-             if (modal) modal.style.display = 'none';
-             // Reset modal content (optional)
-             document.getElementById('previewCoverPhoto').src = '';
-             document.getElementById('previewTitle').textContent = 'Wallpaper Title';
-             document.getElementById('previewDesc').textContent = 'Description goes here...';
+            if (modal) modal.style.display = 'none';
+            document.getElementById('previewCoverPhoto').src = '';
+            document.getElementById('previewTitle').textContent = 'Wallpaper Title';
+            document.getElementById('previewDesc').textContent = 'Description goes here...';
         }
 
         // Toggle Mobile Menu
@@ -1444,26 +1412,19 @@
         // Basic Image Protection (can be bypassed)
         function disableImageProtection() {
             document.addEventListener('contextmenu', function (e) {
-                // Allow context menu on inputs and textareas
-                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                     return;
-                 }
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    return;
+                }
                 e.preventDefault();
                 console.log("Right-click prevented.");
             });
             document.addEventListener('dragstart', function (e) {
                 if (e.target.tagName === 'IMG' || (e.target.classList && e.target.classList.contains('wallpaper-img'))) {
                     e.preventDefault();
-                     console.log("Image dragging prevented.");
+                    console.log("Image dragging prevented.");
                 }
             });
-            // Be cautious with keyboard shortcut prevention as it can hinder accessibility
-            // document.addEventListener('keydown', function (e) {
-            //     if (e.ctrlKey && (e.key === 's' || e.key === 'u')) e.preventDefault();
-            //     if (e.key === 'F12') e.preventDefault();
-            // });
         }
-
     </script>
 </body>
 </html>
