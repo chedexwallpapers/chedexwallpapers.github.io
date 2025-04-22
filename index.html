@@ -1121,20 +1121,23 @@
                 wallpaperCard.className = 'wallpaper-card';
 
                 wallpaperCard.innerHTML = `
-                    <div class="wallpaper-img" style="background-image: url('${wallpaper.coverPhoto || '/api/placeholder/280/200?text=No+Preview'}')" onclick="openPreviewModal('${wallpaper.id}')">
-                        <button class="download-icon-btn" onclick="event.stopPropagation(); triggerDownload('${wallpaper.id}')">
-                            <i class="fas fa-download"></i>
-                        </button>
-                    </div>
-                    <div class="wallpaper-info">
-                        <h3>
-                            ${wallpaper.title || 'Untitled'}
-                            <span class="metadata">
-                                ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
-                            </span>
-                        </h3>
-                    </div>
-                `;
+    <div class="wallpaper-img" style="background-image: url('${wallpaper.coverPhoto || '/api/placeholder/280/200?text=No+Preview'}')" onclick="openPreviewModal('${wallpaper.id}')">
+        <button class="download-icon-btn" onclick="event.stopPropagation(); triggerDownload('${wallpaper.id}')">
+            <i class="fas fa-download"></i>
+        </button>
+        <button class="download-icon-btn" style="right: 50px;" onclick="event.stopPropagation(); shareWallpaper('${wallpaper.id}')">
+            <i class="fas fa-share-alt"></i>
+        </button>
+    </div>
+    <div class="wallpaper-info">
+        <h3>
+            ${wallpaper.title || 'Untitled'}
+            <span class="metadata">
+                ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
+            </span>
+        </h3>
+    </div>
+`;
                 container.appendChild(wallpaperCard);
             });
             if(loadingIndicator) loadingIndicator.style.display = 'none';
@@ -1413,6 +1416,29 @@
             dropdownMenu.classList.remove('active');
             overlay.classList.remove('active');
             body.classList.remove('menu-open');
+        }
+
+        
+        // Share wallpaper by copying URL
+        function shareWallpaper(wallpaperId) {
+            const url = `https://chedexwallpapers.com/wallpaper?id=${wallpaperId}`;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Share link copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy link: ', err);
+            });
+        }
+
+        
+        // Share wallpaper by copying URL
+        function shareWallpaper(wallpaperId) {
+            const url = `${window.location.origin}/wallpaper?id=${wallpaperId}`;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('✅ Share link copied: ' + url);
+            }).catch(err => {
+                console.error('Could not copy link: ', err);
+                alert('❌ Failed to copy link.');
+            });
         }
 
         // Basic Image Protection (can be bypassed)
