@@ -238,11 +238,14 @@
             gap: 8px;
         }
 
-        .wallpaper-info h3 .metadata {
-            font-size: 12px;
-            color: #8a7053;
-            font-weight: normal;
-        }
+       .wallpaper-info h3 .metadata {
+    font-size: 12px;
+    color: #8a7053;
+    font-weight: normal;
+    display: block; /* Add this */
+    margin-top: 4px; /* Add this */
+    text-align: left; /* Add this */
+}
 
         /* Footer Styles */
         footer {
@@ -1125,14 +1128,14 @@
                             <i class="fas fa-download"></i>
                         </button>
                     </div>
-                    <div class="wallpaper-info">
-                        <h3>
-                            ${wallpaper.title || 'Untitled'}
-                            <span class="metadata">
-                                ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
-                            </span>
-                        </h3>
-                    </div>
+                   <div class="wallpaper-info">
+    <h3>
+        ${wallpaper.title || 'Untitled'}
+        <span class="metadata">
+            ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
+        </span>
+    </h3>
+</div>
                 `;
                 container.appendChild(wallpaperCard);
             });
