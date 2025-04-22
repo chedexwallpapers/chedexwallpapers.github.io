@@ -945,8 +945,6 @@
             <h2 id="previewTitle">Wallpaper Title</h2>
             <img id="previewCoverPhoto" src="" alt="Cover Photo" style="width: 100%; max-height: 70vh; object-fit: contain; margin: 20px 0;">
             <p id="previewDesc">Description goes here...</p>
-<button onclick="shareWallpaper(currentPreviewWallpaperId)" class="download-btn" style="margin-top: 10px; margin-bottom: 10px; padding: 12px 20px; background-color: #8a7053; color: #fff; border: none; border-radius: 4px;">Share Wallpaper</button>
-
             <button id="downloadBtnPreview" class="download-btn" style="margin-top: 20px; padding: 12px 20px;">Download Wallpaper</button>
         </div>
     </div>
@@ -992,9 +990,8 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                         <li><i class="fas fa-phone"></i> (555) 123-4567</li>
                         <li><i class="fas fa-envelope"></i> info@chedexwallpapers.com</li>
-                       
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
                         <li><i class="fas fa-map-marker-alt"></i> 123 Wallpaper St, Digital City, DC 12345</li>
                     </ul>
                 </div>
@@ -1006,32 +1003,8 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js">
-// On page load, check for ?id= in URL
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const wallpaperId = params.get('id');
-    if (wallpaperId) {
-        setTimeout(() => {
-            openPreviewModal(wallpaperId);
-        }, 500); // Delay to allow Firebase to load
-    }
-});
-
-</script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js">
-// On page load, check for ?id= in URL
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const wallpaperId = params.get('id');
-    if (wallpaperId) {
-        setTimeout(() => {
-            openPreviewModal(wallpaperId);
-        }, 500); // Delay to allow Firebase to load
-    }
-});
-
-</script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
     <script>
         // IMPORTANT: Replace with your actual Firebase project configuration
@@ -1147,21 +1120,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 wallpaperCard.className = 'wallpaper-card';
 
                 wallpaperCard.innerHTML = `
-    <div class="wallpaper-img" style="background-image: url('${wallpaper.coverPhoto || '/api/placeholder/280/200?text=No+Preview'}')" onclick="openPreviewModal('${wallpaper.id}')">
-        <button class="download-icon-btn" onclick="event.stopPropagation(); triggerDownload('${wallpaper.id}')">
-            <i class="fas fa-download"></i>
-        </button>
-        
-    </div>
-    <div class="wallpaper-info">
-        <h3>
-            ${wallpaper.title || 'Untitled'}
-            <span class="metadata">
-                ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
-            </span>
-        </h3>
-    </div>
-`;
+                    <div class="wallpaper-img" style="background-image: url('${wallpaper.coverPhoto || '/api/placeholder/280/200?text=No+Preview'}')" onclick="openPreviewModal('${wallpaper.id}')">
+                        <button class="download-icon-btn" onclick="event.stopPropagation(); triggerDownload('${wallpaper.id}')">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                    <div class="wallpaper-info">
+                        <h3>
+                            ${wallpaper.title || 'Untitled'}
+                            <span class="metadata">
+                                ${wallpaper.category ? wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1) : 'Uncategorized'} | ${wallpaper.resolution || 'N/A'}
+                            </span>
+                        </h3>
+                    </div>
+                `;
                 container.appendChild(wallpaperCard);
             });
             if(loadingIndicator) loadingIndicator.style.display = 'none';
@@ -1384,19 +1356,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Open Wallpaper Preview Modal
-        
-let currentPreviewWallpaperId;
+        function openPreviewModal(wallpaperId) {
+            const wallpaper = allWallpapers.find(w => w.id === wallpaperId);
 
-// Open Wallpaper Page by navigating
-// Open Wallpaper Page by navigating (SPA style for GitHub Pages)
-function openPreviewModal(wallpaperId) {
-    const newUrl = `${window.location.origin}${window.location.pathname}?id=${wallpaperId}`;
-    window.location.href = newUrl;
-}
-}
+            if (wallpaper && wallpaper.status === 'published') {
+                document.getElementById('previewTitle').textContent = wallpaper.title;
+                document.getElementById('previewCoverPhoto').src = wallpaper.image || '/api/placeholder/500/400?text=No+Image';
+                document.getElementById('previewCoverPhoto').alt = wallpaper.title;
+                document.getElementById('previewDesc').textContent = wallpaper.description || 'No description available.';
 
+                const downloadButton = document.getElementById('downloadBtnPreview');
+                const newDownloadButton = downloadButton.cloneNode(true);
+                downloadButton.parentNode.replaceChild(newDownloadButton, downloadButton);
+                newDownloadButton.addEventListener('click', () => {
+                    triggerDownload(wallpaper.id);
+                    closePreviewModal();
+                });
 
-function closePreviewModal() {
+                document.getElementById('previewModal').style.display = 'flex';
+            } else {
+                console.warn(`Preview requested for non-existent or unpublished wallpaper ID: ${wallpaperId}`);
+                alert("Could not load wallpaper preview.");
+            }
+        }
+
+        // Close Preview Modal
+        function closePreviewModal() {
             const modal = document.getElementById('previewModal');
             if (modal) modal.style.display = 'none';
             document.getElementById('previewCoverPhoto').src = '';
@@ -1429,29 +1414,6 @@ function closePreviewModal() {
             body.classList.remove('menu-open');
         }
 
-        
-        // Share wallpaper by copying URL
-        function shareWallpaper(wallpaperId) {
-            const url = `https://chedexwallpapers.com/wallpaper?id=${wallpaperId}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('Share link copied to clipboard!');
-            }).catch(err => {
-                console.error('Could not copy link: ', err);
-            });
-        }
-
-        
-        // Share wallpaper by copying URL
-        function shareWallpaper(wallpaperId) {
-            const url = `${window.location.origin}/wallpaper?id=${wallpaperId}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('✅ Share link copied: ' + url);
-            }).catch(err => {
-                console.error('Could not copy link: ', err);
-                alert('❌ Failed to copy link.');
-            });
-        }
-
         // Basic Image Protection (can be bypassed)
         function disableImageProtection() {
             document.addEventListener('contextmenu', function (e) {
@@ -1468,18 +1430,6 @@ function closePreviewModal() {
                 }
             });
         }
-    
-// On page load, check for ?id= in URL
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const wallpaperId = params.get('id');
-    if (wallpaperId) {
-        setTimeout(() => {
-            openPreviewModal(wallpaperId);
-        }, 500); // Delay to allow Firebase to load
-    }
-});
-
-</script>
+    </script>
 </body>
 </html>
