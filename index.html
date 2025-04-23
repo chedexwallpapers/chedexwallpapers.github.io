@@ -681,6 +681,78 @@
             cursor: not-allowed;
             border-color: #e8e0cf;
         }
+
+        /* Password Modal Styles */
+        .password-modal-content {
+            background-color: #f8f4eb;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .password-form {
+            margin-top: 20px;
+        }
+
+        .password-input-group {
+            margin-bottom: 15px;
+        }
+
+        .password-input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #5d4b35;
+        }
+
+        .password-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d9c7a0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .password-submit-btn {
+            background-color: #8a7053;
+            color: #f8f4eb;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .password-submit-btn:hover {
+            background-color: #6b573e;
+        }
+
+        .password-error {
+            color: #d9534f;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -799,7 +871,7 @@
             <div class="page-content">
                 <div class="faq-item">
                     <div class="faq-question">How do I download wallpapers?</div>
-                    <div class="faq-answer">To download a wallpaper, simply browse our collection, find a wallpaper you like, and click the "Download" button. The wallpaper will be saved to your device in its original high-resolution format.</div>
+                    <div class="faq-answer">To download a wallpaper, simply browse our collection, find a wallpaper you like, and click the "Download" button. You'll need to watch a short video and enter the required passwords (English, Filipino, and Bisaya) to unlock the download.</div>
                 </div>
 
                 <div class="faq-item">
@@ -949,6 +1021,40 @@
         </div>
     </div>
 
+    <!-- Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content password-modal-content">
+            <span class="close-modal" onclick="closePasswordModal()">&times;</span>
+            <h2>Watch Video to Unlock Download</h2>
+            
+            <div class="video-container">
+                <iframe id="passwordVideo" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <p>Please watch the video and enter the passwords to download:</p>
+            
+            <div class="password-form">
+                <div class="password-input-group">
+                    <label for="englishPassword">English Password:</label>
+                    <input type="password" id="englishPassword" placeholder="Enter English password">
+                </div>
+                
+                <div class="password-input-group">
+                    <label for="filipinoPassword">Filipino Password:</label>
+                    <input type="password" id="filipinoPassword" placeholder="Enter Filipino password">
+                </div>
+                
+                <div class="password-input-group">
+                    <label for="bisayaPassword">Bisaya Password:</label>
+                    <input type="password" id="bisayaPassword" placeholder="Enter Bisaya password">
+                </div>
+                
+                <p id="passwordError" class="password-error">One or more passwords are incorrect. Please try again.</p>
+                <button class="password-submit-btn" onclick="verifyPassword()">Submit Passwords</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1008,7 +1114,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
     <script>
-        // IMPORTANT: Replace with your actual Firebase project configuration
+        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyD5s-oLTsM_RhsaDiVRWdybjtipeCspXmY",
             authDomain: "online-storage-314fb.firebaseapp.com",
@@ -1028,6 +1134,7 @@
         let currentWallpapers = [];
         let currentPage = 1;
         const itemsPerPage = 16;
+        let wallpaperToDownload = null;
 
         // DOM Elements
         const loadingIndicator = document.getElementById('loadingIndicator');
@@ -1214,9 +1321,80 @@
             });
         }
 
-        // Trigger the download
+        // Trigger the download (now shows password modal first)
         function triggerDownload(wallpaperId) {
             const wallpaper = allWallpapers.find(w => w.id === wallpaperId);
+            if (!wallpaper) return;
+
+            wallpaperToDownload = wallpaperId;
+            showPasswordModal(wallpaper);
+        }
+
+        // Show password modal with video
+        function showPasswordModal(wallpaper) {
+            const modal = document.getElementById('passwordModal');
+            const videoIframe = document.getElementById('passwordVideo');
+            
+            // Set video URL if available, otherwise use default
+            const videoUrl = wallpaper.videoUrl || 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+            videoIframe.src = videoUrl.includes('youtube.com/watch') 
+                ? videoUrl.replace('watch?v=', 'embed/') 
+                : videoUrl;
+            
+            // Clear password fields
+            document.getElementById('englishPassword').value = '';
+            document.getElementById('filipinoPassword').value = '';
+            document.getElementById('bisayaPassword').value = '';
+            document.getElementById('passwordError').style.display = 'none';
+            
+            modal.style.display = 'flex';
+        }
+
+        // Close password modal
+        function closePasswordModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordVideo').src = '';
+            wallpaperToDownload = null;
+        }
+
+        // Verify all three passwords
+        function verifyPassword() {
+            if (!wallpaperToDownload) {
+                closePasswordModal();
+                return;
+            }
+
+            const wallpaper = allWallpapers.find(w => w.id === wallpaperToDownload);
+            if (!wallpaper || !wallpaper.passwords) {
+                showPasswordError('Download error. Please try again.');
+                return;
+            }
+
+            const englishPass = document.getElementById('englishPassword').value.trim();
+            const filipinoPass = document.getElementById('filipinoPassword').value.trim();
+            const bisayaPass = document.getElementById('bisayaPassword').value.trim();
+
+            // Check if all passwords match (order: English, Filipino, Bisaya)
+            if (englishPass === wallpaper.passwords.english &&
+                filipinoPass === wallpaper.passwords.filipino &&
+                bisayaPass === wallpaper.passwords.bisaya) {
+                
+                document.getElementById('passwordError').style.display = 'none';
+                closePasswordModal();
+                proceedWithDownload(wallpaper);
+            } else {
+                showPasswordError('One or more passwords are incorrect. Please try again.');
+            }
+        }
+
+        function showPasswordError(message) {
+            const errorElement = document.getElementById('passwordError');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Proceed with download after password verification
+        function proceedWithDownload(wallpaper) {
             if (wallpaper && wallpaper.image) {
                 const link = document.createElement('a');
                 link.href = wallpaper.image;
@@ -1226,14 +1404,14 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                trackDownload(wallpaperId);
+                trackDownload(wallpaper.id);
             } else {
-                console.error(`Wallpaper data or image URL not found for ID ${wallpaperId}.`);
+                console.error(`Wallpaper data or image URL not found for ID ${wallpaper.id}.`);
                 alert("Sorry, couldn't find the wallpaper file for download.");
             }
         }
 
-        // Optional: Track downloads in Firebase
+        // Track download in Firebase
         function trackDownload(wallpaperId) {
             if (typeof database !== 'undefined' && database.ref) {
                 const downloadsRef = database.ref('downloads/' + wallpaperId);
